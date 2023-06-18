@@ -46,7 +46,7 @@ extern "C"
 {
 #endif
 
-#if defined(ARDUINO_TEENSY41)
+#if defined(ARDUINO_TEENSY41) || defined(ARDUINO_TEENSY40)
 
 /* you may define these in your build-environment to use different settings */
 #if !defined(EVE_CS)
@@ -83,12 +83,14 @@ static inline void EVE_pdn_clear(void)
 
 static inline void EVE_cs_set(void)
 {
+    wrapper_spi_beginTransaction();
     digitalWrite(EVE_CS, LOW); /* make EVE listen */
 }
 
 static inline void EVE_cs_clear(void)
 {
     digitalWrite(EVE_CS, HIGH); /* tell EVE to stop listen */
+    wrapper_spi_endTransaction();
 }
 
 static inline void spi_transmit(uint8_t data)

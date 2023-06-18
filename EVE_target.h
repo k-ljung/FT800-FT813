@@ -304,7 +304,7 @@ command buffer is executed by the command co-processor.
 
 #include "EVE_target/EVE_target_Arduino_RP2040.h"
 
-#elif defined(ARDUINO_TEENSY41)
+#elif defined(ARDUINO_TEENSY41) || defined(ARDUINO_TEENSY40)
 
 #include "EVE_target/EVE_target_Arduino_Teensy4.h"
 

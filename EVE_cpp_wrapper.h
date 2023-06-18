@@ -49,6 +49,9 @@ extern "C" {
     void wrapper_spi_transmit(uint8_t data);
     uint8_t wrapper_spi_receive(uint8_t data);
 
+    void wrapper_spi_beginTransaction();
+    void wrapper_spi_endTransaction();
+
 #endif
 
 #ifdef __cplusplus

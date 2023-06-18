@@ -266,7 +266,7 @@ void EVE_start_dma_transfer(void)
 /* ################################################################## */
 /* ################################################################## */
 
-#if defined (ARDUINO_TEENSY41) || (ARDUINO_TEENSY35)
+#if defined (ARDUINO_TEENSY41) || (ARDUINO_TEENSY40) || (ARDUINO_TEENSY35)
 
 #include "EVE_target.h"
 #include <SPI.h>

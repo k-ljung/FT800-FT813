@@ -49,7 +49,9 @@ extern "C" {
 
     void wrapper_spi_transmit_32(uint32_t data)
     {
-        SPI.write32(data);
+        SPI.beginTransaction(SPISettings(30000000, MSBFIRST, SPI_MODE0));
+        SPI.transfer(data);
+        SPI.endTransaction();
     }
 
     uint8_t wrapper_spi_receive(uint8_t data)
@@ -61,12 +63,24 @@ extern "C" {
 
     void wrapper_spi_transmit(uint8_t data)
     {
+        SPI.beginTransaction(SPISettings(30000000, MSBFIRST, SPI_MODE0));
         SPI.transfer(data);
+        SPI.endTransaction();
     }
 
     uint8_t wrapper_spi_receive(uint8_t data)
     {
         return SPI.transfer(data);
+    }
+
+    void wrapper_spi_beginTransaction()
+    {
+        SPI.beginTransaction(SPISettings(30000000, MSBFIRST, SPI_MODE0));
+    }
+
+    void wrapper_spi_endTransaction()
+    {
+        SPI.endTransaction();
     }
 
 #endif
